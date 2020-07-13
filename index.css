@@ -1,0 +1,4681 @@
+
+:root {
+    --day-load-panel-bcolor: white;
+    --day-load-panel-color: rgba(7, 7, 7);
+    --day-hill-color: rgb(172, 170, 170);
+    --day-tent-color: rgb(226, 197, 169);
+    --day-tent-line-color: rgb(112, 111, 111);
+    --day-stone-color:rgb(151, 143, 124);
+    --day-stone-bench-color: rgb(165, 154, 131);
+    --day-sun-moon-color: rgb(224, 197, 134);
+
+    --night-load-panel-color: white;
+    --night-load-panel-bcolor: rgb(82, 79, 76);
+    --night-hill-color: rgb(70, 61, 50);
+    --night-stone-color:rgb(73, 72, 71);
+    --night-stone-bench-color: rgb(73, 72, 71);
+    --night-tent-color: rgb(136, 131, 126);
+    --night-tent-line-color: rgb(109, 107, 106);
+    --night-sun-moon-color: rgb(238, 238, 238);
+    --stripe: #e0655e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    background: var(--day-hill-color);
+}
+
+.load-panel {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--day-load-panel-bcolor);
+    color: var(--day-load-panel-color);
+}
+.hello {
+    font-size: 7em;
+    padding-top: 1.5em;
+    width: 100%;
+    position: absolute;
+    animation: helloAnimation 1s forwards;
+}
+.my-name {
+    padding-top: 2.7em;
+    font-size: 7em; 
+    position: absolute;
+    width: 100%;
+    animation: nameAnimation 1s forwards;
+}
+.occupation {
+    padding-top: 9.8em;
+    font-size: 3em;
+    position: absolute;
+    width: 100%;
+    animation: occupationAnimation 1s forwards;
+}
+.blinking-cursor{
+    padding-top: 11em;
+    width: 100%;
+    position: absolute;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    animation:  blinkingAnimation 1s forwards;
+}
+.blinking-cursor-top{
+    padding-top: 3em;
+    width: 100%;
+    position: absolute;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    animation:  blinkingAnimation 1s forwards;
+}
+.social-media {
+    padding-top: 12em;
+    margin-top: 1.5em;
+    font-size: 3em;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    animation: socialAnimation 1s forwards;
+}
+.twitter, .gmail {
+    text-decoration: none;
+    color: var(--day-load-panel-color);
+}
+
+@keyframes helloAnimation{
+    from {
+        padding: 0;
+        margin-left: -7em;
+        opacity: 0;
+    }
+    to {
+        padding: 1.5em;
+        margin: 0;
+        opacity: 1;
+    }
+}
+@keyframes nameAnimation{
+    from {
+        padding: 0;
+        margin-left: 15em;
+        opacity: 0;
+    }
+    to {
+        padding: 2.7em;
+        margin: 0;
+        opacity: 1;
+    }
+}
+@keyframes occupationAnimation{
+    from {
+        padding: 9.8;
+        margin-left: -30em;
+        opacity: 0;
+    }
+    to {
+        padding: 9.8em;
+        margin: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes blinkingAnimation{
+    from {
+       opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes socialAnimation{
+    from {
+        padding: 14em;
+        margin-left: 0em;
+        opacity: 0;
+    }
+    to {
+        padding: 12em;
+        margin-left: 0em;
+        opacity:1;
+    }
+}
+#sky {
+    position: absolute;
+    z-index: 10;
+    margin-top: 0vh;
+    top: 0;
+    left: 0;
+}
+.sky-moon-sun{
+    stroke: white;
+    stroke-width: 0.1em;
+    fill: var(--day-sun-moon-color);
+}
+.sky-star{
+    stroke: white;
+    stroke-width: 0.1em;
+    fill: white;
+}
+#hill {
+    position: absolute;
+    z-index: 10;
+    margin-top: 84vh;
+    bottom: 0;
+    left: 0;
+}
+.hill-path{
+    stroke:  var(--day-hill-color);
+    stroke-width: 0.6em;
+    fill: var(--day-hill-color);
+}
+.tent {
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: var(--day-tent-color);
+}
+.tent-front-left-line{
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: var(--day-tent-color);
+}
+.tent-lower-half-side {
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: var(--day-tent-color);
+}
+.tent-lower-half-front {
+    stroke:var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: var(--day-tent-color);
+}
+.tent-line-left-back{
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: white;
+}
+.tent-line-left-front{
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: white;
+}
+.tent-line-right-front{
+    stroke: var(--day-tent-line-color);
+    stroke-width: 0.1em;
+    fill: white;
+}
+.stone-fire{
+    stroke: rgb(119, 116, 116);
+    stroke-width: 0.1em;
+    fill: var(--day-stone-bench-color);
+}
+.stone-bench{
+    stroke: rgb(119, 116, 116);
+    stroke-width: 0.1em;
+    fill: var(--day-stone-color);
+}
+
+/*skills panel*/
+.skills-panel {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.title-wrapper{
+    font-family: 'Abril Fatface', cursive;
+    width: 100%;
+    height: 4em;
+    margin: 2em 0;
+}
+.title-inner-wrapper{
+    width: 20em;
+    height: 100%;
+    position: relative;
+}
+.stripe {
+    width: 100%;
+    position: absolute;
+    height: 1.5em;
+    background: var(--stripe);
+    margin-top: 1.7em;
+    z-index: 2;
+}
+.panel-title{
+    width: 100%;
+    position: absolute;
+    font-size: 3em;
+    text-align: center;
+    z-index: 5;
+    color: #2a3d6e;
+}
+.skills-categories{
+    width: 100%;
+    height: 24em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    font-family: 'IM Fell French Canon SC', serif;
+}
+.program-categories{
+    width: 30%;
+}
+.program-title{
+    font-size: 2em;
+}
+.skills-categories-lang{
+    font-size: 1.5em;
+    text-indent: 2em;
+    line-height: 2.5em;
+}
+.special-categories{
+    width: 30%;
+}
+.special-title{
+    font-size: 2em;
+}
+.special-trait{
+    font-size: 1.5em;
+    text-indent: 2em;
+    line-height: 2.5em; 
+}
+.world-categories{
+    width: 30%;
+}
+.world-title{
+    font-size: 2em;
+}
+.world-lang{
+    font-size: 1.5em;
+    text-indent: 2em;
+    line-height: 2.5em; 
+}
+
+/*projects*/
+.projects-panel {
+    position: relative;
+}
+.projects-title{
+    color: #2a3d6e;
+}
+.projects-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    top: 0;
+    font-family: 'Kaushan Script', cursive;
+}
+.projects-project{
+    height: 23em;
+    width: 20em;
+    margin-top: 3em;
+    transition: all 0.3s ease;
+    opacity: 0;
+    text-decoration: none;
+    object-fit: contain;
+}
+.projects-project:hover{
+    margin-top: 0.3em;
+}
+.projects-project-frame{
+    width: 100%;
+    height: 20em;
+    background: rgb(184, 53, 140);
+    border: 1px solid black;
+}
+.projects-project-frame-title{
+    width: 100%;
+    height: 3em;
+    text-align: center;
+}
+.projects-project-frame-title-name{
+    font-size: 1.5em;
+    line-height: 1.5em;
+    color: black;
+}
+.projects-project-1{
+    animation: project-1-animation 0.5s forwards;
+}
+.projects-project-2{
+    animation: project-1-animation 0.5s 0.5s forwards;
+}
+.projects-project-3{
+    animation: project-1-animation 0.5s 1s forwards;
+}
+.projects-project-4{
+    animation: project-1-animation 0.5s 1.5s forwards;
+}
+.projects-project-5{
+    animation: project-1-animation 0.5s 2s forwards;
+}
+.projects-project-6{
+    animation: project-1-animation 0.5s 2.5s forwards;
+}
+.projects-project-7{
+    animation: project-1-animation 0.5s 3s forwards;
+}
+.projects-project-8{
+    animation: project-1-animation 0.5s 3.5s forwards;
+}
+.projects-project-9{
+    animation: project-1-animation 0.5s 4s forwards;
+}
+.projects-project-10{
+    animation: project-1-animation 0.5s 4.5s forwards;
+}
+@keyframes project-1-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-2-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-3-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-4-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-5-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-6-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-7-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-8-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-9-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes project-10-animation{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*about*/
+.about-wrapper{
+    width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.about-wrapper-picture {
+    float: left;
+    width: 20%;
+    height: 20em;
+    background: peru;
+    border-radius: 50%;
+    object-fit: cover;
+    shape-outside: circle(50%);
+    margin: 0.5em;
+}
+.about-text{
+    font-size: 2em;
+    margin: 1em;
+}
+
+/*contact*/
+.contact-panel {
+    margin-top: 5em;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin: 5em 0 0 0;
+}
+.contact-wrapper-twitter , 
+.contact-wrapper-gmail, 
+.contact-wrapper-phone,
+.contact-wrapper-github {
+    width: 20%;
+    height: 5em;
+    background: rgb(44, 167, 65);
+ 
+    position: relative;
+} 
+.contact-wrapper-twitter-a ,
+.contact-wrapper-gmail-a,
+.contact-wrapper-phone-a,
+.contact-wrapper-github-a {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+    line-height: 2.5em;
+    z-index: 2;
+}
+.c-twitter, 
+.c-gmail, 
+.c-phone,
+.c-github {
+    font-size: 0.8em;
+    color: rgb(255, 255, 255);
+}
+
+/*face emoji*/
+.hidden-animal{
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+.face{
+    stroke: rgb(214, 204, 61);
+    stroke-width: 0.1em;
+    fill: rgb(214, 204, 61);
+}
+.left-eye, 
+.right-eye {
+    stroke: black;
+    stroke-width: 0.1em;
+    fill: black; 
+}
+.mouse-close{
+    stroke: black;
+    stroke-width: 0.1em;
+    fill: black; 
+}
+
+.face-emoji {
+    transition: all 1s ease;
+}
+.js-twitter-fe-left{
+    transform: translate(-2.2em, 0) rotate(45deg);
+}
+.js-twitter-fe-right{
+  transform: translate(5em, 6.5em) rotate(-15deg);
+}
+.js-twitter-fe-middle{
+    transform: translate(0, 5em);
+}
+
+.js-github-fe-left{
+    transform: translate(-2.2em, 0) rotate(45deg);
+}
+.js-github-fe-right{
+    transform: translate(5em, 6.5em) rotate(-15deg);
+}
+.js-github-fe-middle{
+    transform: translate(0, 5em);
+}
+
+.js-gmail-fe-left{
+    transform: translate(-2.2em, 0) rotate(45deg);
+}
+.js-gmail-fe-right{
+  transform: translate(5em, 6.5em) rotate(-15deg);
+}
+.js-gmail-fe-middle{
+    transform: translate(0, 5em);
+}
+
+.js-phone-fe-left{
+    transform: translate(-2.2em, 0) rotate(45deg);
+}
+.js-phone-fe-right{
+  transform: translate(5em, 6.5em) rotate(-15deg);
+}
+.js-phone-fe-middle{
+    transform: translate(0, 5em);
+}
+
+.location {
+    text-align: center;
+    margin: 1em 0;
+    font-size: 2em;
+}
+
+/*information about this can be found here: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/*/
+/*responsive*/
+
+/*320px desktop*/
+@media only screen and (min-width: 320px) and (max-width: 599px){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        text-align: center;
+        font-size: 4em;
+        padding-top: 1em;
+        animation: none;
+        margin-left: 0em;
+        left: 0;
+    }
+    .my-name {
+        width: 100%;
+        text-align: center;
+        padding-top: 2em;
+        font-size: 4.5em; 
+        animation: none;
+        margin-left: 0;
+        left: 0;
+    }
+    .occupation {
+        text-align: center;
+        padding-top: 14.2em;
+        font-size: 2em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor{
+        text-align: center;
+        padding-top: 15.5em;
+        font-size: 2em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor-top{
+        padding-top: 3em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 23em;
+        margin-top: 0em;
+        font-size: 1.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 1.5em;
+    }
+    .special-trait{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 1.5em;
+    }
+    .world-lang{
+        font-size: 1.1em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 100%;
+        height: 20em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*-----iphone  4 and 4s ------*/
+/*Portrait*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and  (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        text-align: left;
+        font-size: 2.5em;
+        padding-top: 1.5em;
+        animation: none;
+        margin-left: 1em;
+    }
+    .my-name {
+        text-align: left;
+        padding-top: 3em;
+        font-size: 2.5em; 
+        animation: none;
+        margin-left: 1em;
+        left: 0;
+    }
+    .occupation {
+        text-align: center;
+        padding-top: 10em;
+        font-size: 1.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        text-align: center;
+        padding-top: 11.5em;
+        font-size: 1.5em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 3em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 13em;
+        margin-top: 0em;
+        font-size: 1.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 1.5em;
+    }
+    .special-trait{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 1.5em;
+    }
+    .world-lang{
+        font-size: 1.1em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 100%;
+        height: 20em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*------ iphone 5, 5s, 5c and 5se -------*/
+/*Portrait*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait){
+    /*inherit most of the properties and values from media query before this*/
+    /*load-panel*/
+    .social-media {
+        padding-top: 15em;
+        margin-top: 0em;
+        font-size: 1.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    } 
+    /*skills-panel*/
+    .program-title{
+        font-size: 1.5em;
+        margin-left: 0.5em;
+    }
+    .special-title{
+        font-size: 1.5em;
+        margin-left: 0.5em;
+    }
+    .world-title{
+        font-size: 1.5em;
+        margin-left: 0.5em;
+    }
+}
+/*-- Galaxy S3 --*/
+/* Portrait */
+@media only screen and (device-width: 320px) and (device-height: 640px) and (orientation: portrait){
+    .blinking-cursor{
+        margin-left: 2em;
+        padding-top: 12em;
+        font-size: 1.5em;
+        animation: none;
+        text-align: left;
+    }
+    /*inherit the rest*/
+}
+/*--- iPhone X ---*/
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        text-align: center;
+        font-size: 4em;
+        padding-top: 1em;
+        animation: none;
+        margin-left: 0em;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 2.5em;
+        font-size: 3.8em; 
+        animation: none;
+        margin-left: 0em;
+    }
+    .occupation {
+        
+        padding-top: 12.5em;
+        font-size: 2em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor{
+        margin-left: 0em;
+        padding-top: 14.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 18.5em;
+        margin-top: 0em;
+        font-size: 1.8em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 1.8em;
+        margin-left: 0.1em;
+    }
+    .skills-categories-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 1.8em;
+        margin-left: 0.1em;
+    }
+    .special-trait{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 1.8em;
+        margin-left: 0.1em;
+    }
+    .world-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 75%;
+        height: 20em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*-- Galaxy S4, S5, and Note 3 and Google Pixels and HTC one --*/
+/*Portrait*/
+@media only screen and (device-width: 360px) and (device-height: 640px) and (orientation: portrait){
+    /*load panel - front page*/
+     .load-panel {
+         text-align: left;
+     }
+     .hello {
+         font-size: 3.5em;
+         padding-top: 1em;
+         animation: none;
+         margin-left: 0.8em;
+     }
+     .my-name {
+         width: 80%;
+         padding-top: 2.2em;
+         font-size: 3.5em; 
+         animation: none;
+         margin-left: 0.8em;
+     }
+     .occupation {
+         margin-left: 0.7em;
+         padding-top: 11em;
+         font-size: 2em;
+         animation: none;
+     }
+     .blinking-cursor{
+         text-align: left;
+         margin-left: 1.5em;
+         padding-top: 12.5em;
+         font-size: 2em;
+         animation: none;
+     }
+     .blinking-cursor-top{
+         padding-top: 1em;
+         font-size: 3em;
+         animation: none;
+     }
+     .social-media {
+         padding-top: 16em;
+         margin-top: 0em;
+         font-size: 1.8em;
+         position: absolute;
+         text-align: center;
+         width: 100%;
+         animation: none;
+     }  
+     /*skills panel*/
+     .skills-panel {
+         width: 100%;
+         display: flex;
+         flex-flow: row wrap;
+     }
+     .title-wrapper{
+       /*inherit*/
+     }
+     .title-inner-wrapper{
+        /*inherit*/
+     }
+     .stripe {
+       /*inherit*/
+     }
+     .panel-title{
+        /*inherit*/
+     }
+     .skills-categories{
+         width: 100%;
+         height: 100%;
+         display: flex;
+         flex-flow: row wrap;
+         justify-content: center;
+         font-family: 'IM Fell French Canon SC', serif;
+     }
+     .program-categories{
+         width: 100%;
+         height: 100%;
+     }
+     .program-title{
+         font-size: 1.5em;
+         margin-left: 0.1em;
+     }
+     .skills-categories-lang{
+         font-size: 1.3em;
+         text-indent: 1.5em;
+         line-height: 3em; 
+     }
+     .special-categories{
+         width: 100%;
+     }
+     .special-title{
+         font-size: 1.5em;
+         margin-left: 0.1em;
+     }
+     .special-trait{
+         font-size: 1.3em;
+         text-indent: 1.5em;
+         line-height: 3em; 
+     }
+     .world-categories{
+         width: 100%;
+     }
+     .world-title{
+         font-size: 1.5em;
+         margin-left: 0.1em;
+     }
+     .world-lang{
+         font-size: 1.3em;
+         text-indent: 1.5em;
+         line-height: 3em; 
+     }  
+     /*about*/
+     .about-wrapper{
+         display: flex;
+         flex-flow: row wrap;
+         justify-content: center;
+     }
+     .about-wrapper-picture {
+         float: none;
+         width: 75%;
+         height: 18em;
+         margin: 0em;
+     }
+     .about-text{
+         width: 100%;
+         font-size: 2em;
+         margin: 0.5em;
+         text-align: justify;
+     }
+     /*contact*/
+     .contact-panel {
+         margin: 1em 0 0 0;
+     }
+     .contact-wrapper {
+         /*inherit*/
+         margin-top: 0em;
+     }
+     .contact-wrapper-twitter , 
+     .contact-wrapper-gmail, 
+     .contact-wrapper-phone,
+     .contact-wrapper-github {
+          /*inherit*/
+     } 
+     .contact-wrapper-twitter-a ,
+     .contact-wrapper-gmail-a,
+     .contact-wrapper-phone-a,
+     .contact-wrapper-github-a {
+          /*inherit*/
+     }
+     .c-twitter, 
+     .c-gmail, 
+     .c-phone,
+     .c-github {
+          /*inherit*/
+     }
+     .hide-contact-text {
+         display: none;
+     }
+     /*inherit hidden animal and all their property and value*/ 
+}
+/*-- Galaxy S8 and Google Pixel XL --*/
+/* Portrait */
+@media screen and (device-width: 360px) and (device-height: 740px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        font-size: 4em;
+        padding-top: 1em;
+        animation: none;
+        margin-left: 0.6em;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 2.5em;
+        font-size: 3.8em; 
+        animation: none;
+        margin-left: 0.7em;
+    }
+    .occupation {
+        margin-left: 0.7em;
+        padding-top: 12.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        text-align: left;
+        margin-left: 1.5em;
+        padding-top: 14em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 18.5em;
+        margin-top: 0em;
+        font-size: 1.8em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 1.7em;
+        margin-left: 0.1em;
+    }
+    .skills-categories-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 1.7em;
+        margin-left: 0.1em;
+    }
+    .special-trait{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 1.7em;
+        margin-left: 0.1em;
+    }
+    .world-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 75%;
+        height: 18em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*---- iphone 6, 6S, 7 and 8 ----*/
+/*--- iPhone 6+, 7+ and 8+ ---*/
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        text-align: center;
+        font-size: 2.5em;
+        padding-top: 3em;
+        animation: none;
+        margin-left: 0em;
+    }
+    .my-name {
+        text-align: center;
+        padding-top: 4.5em;
+        font-size: 2.3em; 
+        animation: none;
+        margin-left: 0em;
+    }
+    .occupation {
+        text-align: center;
+        padding-top: 9em;
+        font-size: 1.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        text-align: center;
+        padding-top: 12em;
+        font-size: 1.5em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 15em;
+        margin-top: 0em;
+        font-size: 1.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    } 
+    /*skills-panel*/
+    .program-title{
+        font-size: 1.8em;
+        margin-left: 0.2em;
+    }
+    .special-title{
+        font-size: 1.8em;
+        margin-left: 0.2em;
+    }
+    .world-title{
+        font-size: 1.8em;
+        margin-left: 0.2em;
+    }
+    .world-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*inherited the rest*/
+}
+/*--- iPhone 6+, 7+ and 8+ ---*/
+/*Portrait*/
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px)  and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        font-size: 4em;
+        padding-top: 2em;
+        animation: none;
+        margin-left: 0em;
+    }
+    .my-name {
+        text-align: center;
+        width: 100%;
+        padding-top: 3.5em;
+        font-size: 3.8em; 
+        animation: none;
+        margin-left: 0em;
+    }
+    .occupation {
+        text-align: center;
+        margin-left: 0em;
+        padding-top: 12.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        text-align: center;
+        padding-top: 14.5em;
+        font-size: 2em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 16.5em;
+        margin-top: 0em;
+        font-size: 2em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2em;
+        margin-left: 0.1em;
+    }
+    .skills-categories-lang{
+        font-size: 1.5em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2em;
+        margin-left: 0.1em;
+    }
+    .special-trait{
+        font-size: 1.5em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2em;
+        margin-left: 0.1em;
+    }
+    .world-lang{
+        font-size: 1.5em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 75%;
+        height: 20em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+
+/*--- Nexus 7 ---*/
+/* Portrait */
+@media screen and (device-width: 600px) and (device-height: 960px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 4em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.5em;
+        font-size: 6em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 11.5em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 13em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 18em;
+        margin-top: 0em;
+        font-size: 2.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 25%;
+        height: 10em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*--- Galaxy Tab 2 ---*/
+/* Portrait */
+@media (min-device-width: 600px) and (max-device-height: 1024px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 3em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.2em;
+        font-size: 6em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 13em;
+        font-size: 2.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 12.5em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top:18em;
+        margin-top: 0em;
+        font-size: 2.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 30%;
+        height: 12em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.5em;
+        font-size: 8em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 22em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 24em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 29em;
+        margin-top: 0em;
+        font-size: 1.8em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 30%;
+        height: 15em;
+        margin: 0em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+         font-size: 1.8em;
+         margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*--- iPad 3, 4 and Pro 9.7 ---*/
+/*Portrait*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /*does not support in firefox, so don't know how to test it*/
+}
+/*Portrait*/
+/*same min and max because we don't want to collide with desktop*/
+@media only screen and (min-device-width: 834px) and (max-device-width: 834px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.4em;
+        font-size: 9em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 24em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 26em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 32em;
+        margin-top: 0em;
+        font-size: 1.8em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 30%;
+        height: 15em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*Portrait*/
+@media only screen and (min-device-width: 800px) and (max-device-width: 1280px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.5em;
+        font-size: 8em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 14.5em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 16em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 22em;
+        margin-top: 0em;
+        font-size: 2.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 23%;
+        height: 12em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*--- iPad Pro 12.9 ---*/
+/*Portrait*/
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.2em;
+        font-size: 11em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 20em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 21.5em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 39em;
+        margin-top: 0em;
+        font-size: 1.8em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 22%;
+        height: 15em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*--- Nexus 9 ---*/
+/*Portrait*/
+@media screen and (device-width: 1536px) and (device-height: 2048px) and (orientation: portrait){
+    /* default it ???*/
+}
+
+
+
+
+/*iphone 4 smaller height*/
+@media only screen and (min-width: 320px) and (max-width: 599px) and (max-height: 328px){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: left;
+    }
+    .hello {
+        text-align: center;
+        font-size: 2.5em;
+        padding-top: 1.2em;
+        animation: none;
+        margin-left: 0em;
+        left: 0;
+    }
+    .my-name {
+        width: 100%;
+        text-align: center;
+        padding-top: 2.3em;
+        font-size: 2.5em; 
+        animation: none;
+        margin-left: 0;
+        left: 0;
+    }
+    .occupation {
+        text-align: center;
+        padding-top: 6em;
+        font-size: 1.5em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor{
+        text-align: center;
+        padding-top: 5.5em;
+        font-size: 2em;
+        animation: none;
+        margin-left: 0;
+    }
+    .blinking-cursor-top{
+        padding-top: 3em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 9em;
+        margin-top: 0em;
+        font-size: 1.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 1.5em;
+    }
+    .special-trait{
+        font-size: 1.3em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 1.5em;
+    }
+    .world-lang{
+        font-size: 1.1em;
+        text-indent: 1.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .about-wrapper-picture {
+        float: none;
+        width: 100%;
+        height: 20em;
+        margin: 0em;
+    }
+    .about-text{
+        width: 100%;
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*600px desktop*/
+@media only screen and  (min-width: 600px){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin-left: 0;
+    }
+    .my-name {
+        width: 5em;
+        padding-top: 2em;
+        font-size: 6em; 
+        animation: none;
+        margin-left: 50%;
+        left: -2.5em;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 15em;
+        font-size: 2.5em;
+        animation: none;
+        left: 0;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 13.7em;
+        font-size: 3em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 0em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top:18em;
+        margin-top: 0em;
+        font-size: 2.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 30%;
+        height: 12em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0em;
+        text-align: start;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/* Landscape */
+@media screen and (min-width: 600px) and (max-height: 764px) and (orientation: landscape){
+    /*load panel - front page*/
+    .load-panel {
+       text-align: left;
+   }
+   .hello {
+       text-align: center;
+       font-size: 2.5em;
+       padding-top: 1em;
+       animation: none;
+       margin-left: 0em;
+   }
+   .my-name {
+       width: 100%;
+       text-align: center;
+       padding-top: 2em;
+       font-size: 2.5em; 
+       animation: none;
+       margin-left: 0em;
+       left: 0;
+   }
+   .occupation {
+       text-align: center;
+       padding-top: 4.7em;
+       font-size: 1.7em;
+       animation: none;
+       margin-left: 0em;
+   }
+   .blinking-cursor{
+        text-align: center;
+       padding-top: 6.7em;
+       font-size: 1.5em;
+       animation: none;
+       margin-left: 0em;
+       left: 0;
+       width: 100%;
+   }
+   .blinking-cursor-top{
+       padding-top: 3em;
+       font-size: 3em;
+       animation: none;
+   }
+   .social-media {
+       padding-top: 9em;
+       margin-top: 0em;
+       font-size: 1.3em;
+       position: absolute;
+       text-align: center;
+       width: 100%;
+       animation: none;
+   }  
+   /*skills panel*/
+   .skills-panel {
+       width: 100%;
+       display: flex;
+       flex-flow: row wrap;
+   }
+   .title-wrapper{
+     /*inherit*/
+   }
+   .title-inner-wrapper{
+      /*inherit*/
+   }
+   .stripe {
+     /*inherit*/
+   }
+   .panel-title{
+      /*inherit*/
+   }
+   .skills-categories{
+       width: 100%;
+       height: 100%;
+       display: flex;
+       flex-flow: row wrap;
+       justify-content: center;
+       font-family: 'IM Fell French Canon SC', serif;
+   }
+   .program-categories{
+       width: 100%;
+       height: 100%;
+   }
+   .program-title{
+       font-size: 2em;
+       margin-left: 0.5em;
+   }
+   .skills-categories-lang{
+       font-size: 1.5em;
+       text-indent: 2em;
+       line-height: 3em; 
+   }
+   .special-categories{
+      width: 100%;
+   }
+   .special-title{
+       font-size: 2em;
+       margin-left: 0.5em;
+   }
+   .special-trait{
+       font-size: 1.5em;
+       text-indent: 2em;
+       line-height: 3em; 
+   }
+   .world-categories{
+       width: 100%;
+   }
+   .world-title{
+       font-size: 2em;
+       margin-left: 0.5em;
+   }
+   .world-lang{
+       font-size: 1.5em;
+       text-indent: 2em;
+       line-height: 3em; 
+   }  
+   /*about*/
+   .about-wrapper{
+       display: block;
+   }
+   .about-wrapper-picture {
+       float: left;
+       width: 30%;
+       height: 15em;
+       margin: 1em;
+       shape-outside: circle(50%);
+   }
+   .about-text{
+       font-size: 2em;
+       margin: 0.5em;
+       text-align: justify;
+   }
+   /*contact*/
+   .contact-panel {
+       margin: 1em 0 0 0;
+   }
+   .contact-wrapper {
+       /*inherit*/
+       margin-top: 0em;
+   }
+   .contact-wrapper-twitter , 
+   .contact-wrapper-gmail, 
+   .contact-wrapper-phone,
+   .contact-wrapper-github {
+        /*inherit*/
+   } 
+   .contact-wrapper-twitter-a ,
+   .contact-wrapper-gmail-a,
+   .contact-wrapper-phone-a,
+   .contact-wrapper-github-a {
+        /*inherit*/
+   }
+   .c-twitter, 
+   .c-gmail, 
+   .c-phone,
+   .c-github {
+        /*inherit*/
+        font-size: 1.5em;
+        margin-top: 0.4em;
+   }
+   .hide-contact-text {
+       display: none;
+   }
+   /*inherit hidden animal and all their property and value*/  
+}
+
+
+/*1024px desktop*/
+@media only screen and (min-width: 1024px){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 2em;
+        margin: 0;
+        animation: helloAnimation 1s forwards;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 3em;
+        font-size: 5.5em; 
+        margin-left: 0;
+        left: 0em;
+        animation: nameAnimation 1s forwards;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 10em;
+        font-size: 2.5em;
+        animation: occupationAnimation 1s forwards;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 15em;
+        font-size: 2em;
+        animation: blinkingAnimation 1s forwards;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: blinkingAnimation 1s forwards;
+    }
+    .social-media {
+        padding-top:17em;
+        margin-top: 0em;
+        font-size: 2em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: socialAnimation 1s forwards;
+    }  
+    @keyframes helloAnimation{
+        from {
+            padding-top: 0;
+            margin-left: -7em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 2em;
+            margin-left: 0;
+            opacity: 1;
+        }
+    }
+    @keyframes nameAnimation{
+        from {
+            padding-top: 0;
+            margin-left: 15em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 3em;
+            margin-left: 0;
+            opacity: 1;
+        }
+    }
+    @keyframes occupationAnimation{
+        from {
+            padding-top: 10;
+            margin-left: -30em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 10em;
+            margin-left: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes blinkingAnimation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes socialAnimation{
+        from {
+            padding-top: 30em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 17em;
+            opacity:1;
+        }
+    }
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 50%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.3em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 50%;
+    }
+    .special-title{
+        font-size: 2.3em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.3em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 15%;
+        height: 15em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0em;
+        text-align: start;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*iphone x .. etc use this*/
+/* landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 896px) and (orientation: landscape){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 2.5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 2.2em;
+        font-size: 2.5em; 
+        animation: none;
+        margin-left: 0;
+        left: 0;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 5.7em;
+        font-size: 1.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 5.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top:7em;
+        margin-top: 0em;
+        font-size: 2em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 20%;
+        height: 13em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+         font-size: 1.8em;
+         margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*mostly this for ipad*/
+/* landscape */
+@media only screen and (min-device-width: 898px) and (max-device-width: 1024px) and (orientation: landscape){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 4em;
+        padding-top: 2em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 3em;
+        font-size: 4em; 
+        animation: none;
+        margin-left: 0;
+        left: 0;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 8.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 10em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 8em;
+        margin-top: 0em;
+        font-size: 3em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+      /*inherit*/
+    }
+    .title-inner-wrapper{
+       /*inherit*/
+    }
+    .stripe {
+      /*inherit*/
+    }
+    .panel-title{
+       /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 100%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 100%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1.5em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.5em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 20%;
+        height: 13em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+         /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+         /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+         /*inherit*/
+         font-size: 1.8em;
+         margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*Landscape*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1112px) and (orientation: landscape) {
+     /*does not support in firefox, so don't know how to test it*/
+}
+/*Landscape*/
+@media only screen and (min-device-width: 1113px) and (max-device-width: 1280px) and (orientation: landscape){
+     /*load panel - front page*/
+     .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 3em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 2em;
+        font-size: 4em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 7.5em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 9em;
+        font-size: 2em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top:12em;
+        margin-top: 0em;
+        font-size: 2em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 50%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 50%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    } 
+    /*projects*/ 
+    .projects-project{
+        height: 25em;
+        width: 25em;
+        margin-top: 3em;
+        transition: all 0.3s ease;
+        opacity: 0;
+        text-decoration: none;
+        object-fit: contain;
+    }
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 15%;
+        height: 12em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+
+/*-- Laptops --*/
+/*--- 720p HD ---*/
+@media screen and (device-width: 1280px) and (device-height: 720px){
+    /*load panel - front page*/
+    .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 0.5em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1em;
+        font-size: 8em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 5.5em;
+        font-size: 3.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 6em;
+        font-size: 4em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 8.5em;
+        margin-top: 0em;
+        font-size: 3.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 50%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 50%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    .projects-project{
+        width: 23em;
+        height: 30em;
+    }
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 19%;
+        height: 17em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+/*--- Retina Screens ---*/
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+      /*load panel - front page*/
+      .load-panel {
+        text-align: center;
+    }
+    .hello {
+        font-size: 5em;
+        padding-top: 1em;
+        animation: none;
+        margin: 0;
+    }
+    .my-name {
+        width: 100%;
+        padding-top: 1.5em;
+        font-size: 8em; 
+        animation: none;
+        margin: unset;
+    }
+    .occupation {
+        margin-left: 0;
+        padding-top: 6.5em;
+        font-size: 3.5em;
+        animation: none;
+    }
+    .blinking-cursor{
+        margin-left: 0;
+        padding-top: 7em;
+        font-size: 4em;
+        animation: none;
+    }
+    .blinking-cursor-top{
+        padding-top: 1em;
+        font-size: 3em;
+        animation: none;
+    }
+    .social-media {
+        padding-top: 10em;
+        margin-top: 0em;
+        font-size: 3.5em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: none;
+    }  
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+    /*inherit*/
+    }
+    .title-inner-wrapper{
+    /*inherit*/
+    }
+    .stripe {
+    /*inherit*/
+    }
+    .panel-title{
+    /*inherit*/
+    }
+    .skills-categories{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 50%;
+        height: 100%;
+    }
+    .program-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .skills-categories-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .special-categories{
+        width: 50%;
+    }
+    .special-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .special-trait{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }
+    .world-categories{
+        width: 100%;
+    }
+    .world-title{
+        font-size: 2.5em;
+        margin-left: 1em;
+    }
+    .world-lang{
+        font-size: 2em;
+        text-indent: 2.2em;
+        line-height: 3em; 
+    }  
+    /*about*/
+    .about-wrapper{
+        display: block;
+        
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 19%;
+        height: 17em;
+        margin: 1em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: justify;
+    }
+    /*contact*/
+    .contact-panel {
+        margin: 1em 0 0 0;
+    }
+    .contact-wrapper {
+        /*inherit*/
+        margin-top: 0em;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        /*inherit*/
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        /*inherit*/
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        /*inherit*/
+        font-size: 1.8em;
+        margin-top: 0.2em;
+    }
+    .hide-contact-text {
+        display: none;
+    }
+    /*inherit hidden animal and all their property and value*/
+}
+
+/*all big screen*/
+@media screen and (min-width: 1600px) and (orientation: landscape){
+    .load-panel {
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        font-family: 'Abril Fatface', cursive;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--day-load-panel-bcolor);
+        color: var(--day-load-panel-color);
+    }
+    .hello {
+        font-size: 7em;
+        padding-top: 1.5em;
+        width: 100%;
+        position: absolute;
+        animation: helloAnimation 1s forwards;
+    }
+    .my-name {
+        padding-top: 2.7em;
+        font-size: 7em; 
+        position: absolute;
+        width: 100%;
+        animation: nameAnimation 1s forwards;
+    }
+    .occupation {
+        padding-top: 9.8em;
+        font-size: 3em;
+        position: absolute;
+        width: 100%;
+        animation: occupationAnimation 1s forwards;
+    }
+    .blinking-cursor{
+        padding-top: 10.5em;
+        width: 100%;
+        position: absolute;
+        font-size: 3em;
+        font-family: 'Courier New', Courier, monospace;
+     
+    }
+    .blinking-cursor-top{
+        padding-top: 3em;
+        width: 100%;
+        position: absolute;
+        font-size: 3em;
+        font-family: 'Courier New', Courier, monospace;
+        animation:  blinkingAnimation 1s forwards;
+    }
+    .social-media {
+        padding-top: 12em;
+        margin-top: 1.5em;
+        font-size: 3em;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        animation: socialAnimation 1s forwards;
+    }
+    .twitter, .gmail {
+        text-decoration: none;
+        color: var(--day-load-panel-color);
+    }
+
+    @keyframes helloAnimation{
+        from {
+            padding-top: 0;
+            margin-left: -7em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 1.5em;
+            margin: 0;
+            opacity: 1;
+        }
+    }
+    @keyframes nameAnimation{
+        from {
+            padding-top: 0;
+            margin-left: 15em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 2.7em;
+            margin: 0;
+            opacity: 1;
+        }
+    }
+    @keyframes occupationAnimation{
+        from {
+            padding-top: 9em;
+            margin-left: -30em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 9em;
+            margin-left: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes blinkingAnimation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes socialAnimation{
+        from {
+            padding-top: 14em;
+            margin-left: 0em;
+            opacity: 0;
+        }
+        to {
+            padding-top: 12em;
+            margin-left: 0em;
+            opacity:1;
+        }
+    }
+    #sky {
+        position: absolute;
+        z-index: 10;
+        margin-top: 0vh;
+        top: 0;
+        left: 0;
+    }
+    .sky-moon-sun{
+        stroke: white;
+        stroke-width: 0.1em;
+        fill: var(--day-sun-moon-color);
+    }
+    .sky-star{
+        stroke: white;
+        stroke-width: 0.1em;
+        fill: white;
+    }
+    #hill {
+        position: absolute;
+        z-index: 10;
+        margin-top: 84vh;
+        bottom: 0;
+        left: 0;
+    }
+    .hill-path{
+        stroke:  var(--day-hill-color);
+        stroke-width: 0.6em;
+        fill: var(--day-hill-color);
+    }
+    .tent {
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: var(--day-tent-color);
+    }
+    .tent-front-left-line{
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: var(--day-tent-color);
+    }
+    .tent-lower-half-side {
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: var(--day-tent-color);
+    }
+    .tent-lower-half-front {
+        stroke:var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: var(--day-tent-color);
+    }
+    .tent-line-left-back{
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: white;
+    }
+    .tent-line-left-front{
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: white;
+    }
+    .tent-line-right-front{
+        stroke: var(--day-tent-line-color);
+        stroke-width: 0.1em;
+        fill: white;
+    }
+    .stone-fire{
+        stroke: rgb(119, 116, 116);
+        stroke-width: 0.1em;
+        fill: var(--day-stone-bench-color);
+    }
+    .stone-bench{
+        stroke: rgb(119, 116, 116);
+        stroke-width: 0.1em;
+        fill: var(--day-stone-color);
+    }
+
+    /*skills panel*/
+    .skills-panel {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .title-wrapper{
+        font-family: 'Abril Fatface', cursive;
+        width: 100%;
+        height: 4em;
+        margin: 2em 0;
+    }
+    .title-inner-wrapper{
+        width: 20em;
+        height: 100%;
+        position: relative;
+    }
+    .stripe {
+        width: 100%;
+        position: absolute;
+        height: 1.5em;
+        background: var(--stripe);
+        margin-top: 1.7em;
+        z-index: 2;
+    }
+    .panel-title{
+        width: 100%;
+        position: absolute;
+        font-size: 3em;
+        text-align: center;
+        z-index: 5;
+        color: #2a3d6e;
+    }
+    .skills-categories{
+        width: 100%;
+        height: 24em;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+    .program-categories{
+        width: 30%;
+    }
+    .program-title{
+        font-size: 2em;
+    }
+    .skills-categories-lang{
+        font-size: 1.5em;
+        text-indent: 2em;
+        line-height: 2.5em;
+    }
+    .special-categories{
+        width: 30%;
+    }
+    .special-title{
+        font-size: 2em;
+    }
+    .special-trait{
+        font-size: 1.5em;
+        text-indent: 2em;
+        line-height: 2.5em; 
+    }
+    .world-categories{
+        width: 30%;
+    }
+    .world-title{
+        font-size: 2em;
+    }
+    .world-lang{
+        font-size: 1.5em;
+        text-indent: 2em;
+        line-height: 2.5em; 
+    }
+
+    /*projects*/
+    .projects-panel {
+        position: relative;
+    }
+    .projects-title{
+        color: #2a3d6e;
+    }
+    .projects-wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        top: 0;
+        font-family: 'Kaushan Script', cursive;
+    }
+    .projects-project{
+        height: 20em;
+        width: 20em;
+        margin-top: 3em;
+        transition: all 0.3s ease;
+        opacity: 0;
+        text-decoration: none;
+        object-fit: contain;
+    }
+    .projects-project:hover{
+        margin-top: 0.3em;
+    }
+    .projects-project-frame{
+        width: 100%;
+        height: 20em;
+        background: rgb(184, 53, 140);
+        border: 1px solid black;
+    }
+    .projects-project-frame-title{
+        width: 100%;
+        height: 3em;
+        text-align: center;
+    }
+    .projects-project-frame-title-name{
+        font-size: 1.5em;
+        line-height: 1.5em;
+        color: black;
+    }
+    .projects-project-1{
+        animation: project-1-animation 0.5s forwards;
+    }
+    .projects-project-2{
+        animation: project-1-animation 0.5s 0.5s forwards;
+    }
+    .projects-project-3{
+        animation: project-1-animation 0.5s 1s forwards;
+    }
+    .projects-project-4{
+        animation: project-1-animation 0.5s 1.5s forwards;
+    }
+    .projects-project-5{
+        animation: project-1-animation 0.5s 2s forwards;
+    }
+    .projects-project-6{
+        animation: project-1-animation 0.5s 2.5s forwards;
+    }
+    .projects-project-7{
+        animation: project-1-animation 0.5s 3s forwards;
+    }
+    .projects-project-8{
+        animation: project-1-animation 0.5s 3.5s forwards;
+    }
+    .projects-project-9{
+        animation: project-1-animation 0.5s 4s forwards;
+    }
+    .projects-project-10{
+        animation: project-1-animation 0.5s 4.5s forwards;
+    }
+    @keyframes project-1-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-2-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-3-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-4-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-5-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-6-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-7-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-8-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-9-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes project-10-animation{
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /*about*/
+    .about-wrapper{
+        width: 100%;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    .about-wrapper-picture {
+        float: left;
+        width: 10%;
+        height: 12em;
+        background: peru;
+        border-radius: 50%;
+        object-fit: cover;
+        shape-outside: circle(50%);
+        margin: 0.5em;
+    }
+    .about-text{
+        font-size: 2em;
+        margin: 0em;
+    }
+
+    /*contact*/
+    .contact-panel {
+        margin-top: 5em;
+    }
+
+    .contact-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        margin: 5em 0 0 0;
+    }
+    .contact-wrapper-twitter , 
+    .contact-wrapper-gmail, 
+    .contact-wrapper-phone,
+    .contact-wrapper-github {
+        width: 20%;
+        height: 5em;
+        background: rgb(44, 167, 65);
+        position: relative;
+    } 
+    .contact-wrapper-twitter-a ,
+    .contact-wrapper-gmail-a,
+    .contact-wrapper-phone-a,
+    .contact-wrapper-github-a {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        font-size: 2em;
+        text-decoration: none;
+        color: white;
+        line-height: 2.5em;
+        z-index: 2;
+    }
+    .c-twitter, 
+    .c-gmail, 
+    .c-phone,
+    .c-github {
+        font-size: 0.8em;
+        color: rgb(255, 255, 255);
+    }
+    .hide-contact-text {
+        display: inline;
+    }
+    /*face emoji*/
+    .hidden-animal{
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+    .face{
+        stroke: rgb(214, 204, 61);
+        stroke-width: 0.1em;
+        fill: rgb(214, 204, 61);
+    }
+    .left-eye, 
+    .right-eye {
+        stroke: black;
+        stroke-width: 0.1em;
+        fill: black; 
+    }
+    .mouse-close{
+        stroke: black;
+        stroke-width: 0.1em;
+        fill: black; 
+    }
+
+    .face-emoji {
+        transition: all 1s ease;
+    }
+    .js-twitter-fe-left{
+        transform: translate(-2.2em, 0) rotate(45deg);
+    }
+    .js-twitter-fe-right{
+    transform: translate(5em, 6.5em) rotate(-15deg);
+    }
+    .js-twitter-fe-middle{
+        transform: translate(0, 5em);
+    }
+
+    .js-github-fe-left{
+        transform: translate(-2.2em, 0) rotate(45deg);
+    }
+    .js-github-fe-right{
+        transform: translate(5em, 6.5em) rotate(-15deg);
+    }
+    .js-github-fe-middle{
+        transform: translate(0, 5em);
+    }
+
+    .js-gmail-fe-left{
+        transform: translate(-2.2em, 0) rotate(45deg);
+    }
+    .js-gmail-fe-right{
+    transform: translate(5em, 6.5em) rotate(-15deg);
+    }
+    .js-gmail-fe-middle{
+        transform: translate(0, 5em);
+    }
+
+    .js-phone-fe-left{
+        transform: translate(-2.2em, 0) rotate(45deg);
+    }
+    .js-phone-fe-right{
+    transform: translate(5em, 6.5em) rotate(-15deg);
+    }
+    .js-phone-fe-middle{
+        transform: translate(0, 5em);
+    }
+
+    .location {
+        text-align: center;
+        margin: 1em 0;
+        font-size: 2em;
+    }
+
+}
