@@ -1,15 +1,15 @@
-let blinkingCursor = document.querySelector(".js-blink-cursor");
+//let blinkingCursor = document.querySelector(".js-blink-cursor");
 let blink = true;
 
 let dayLoadPanelColor = "rgb(7, 7, 7)";
 let dayLoadPanelBcolor = "white";
 
-let nightHillBColor = "rgb(70, 61, 50)";
+let nightHillBColor = "rgb(90, 90, 90)";
 let documentBodyColor = "white";
 let nightLoadPanelBcolor  = "rgb(82, 79, 76)";
 let nightLoadPanelColor  = "white";
 let nightSunMoonColor  = "rgb(238, 238, 238)";
-let nightHillColor = "rgb(70, 61, 50)";
+let nightHillColor = "rgb(90, 90, 90)";
 let nightStoneColor = "rgb(73, 72, 71)";
 let nightTentColor = "rgb(136, 131, 126)";
 let nightTentLineColor = "rgb(109, 107, 106)";
@@ -61,6 +61,8 @@ let faceEmojiRightPhone = document.querySelector(".js-phone-fe-right");
 let faceEmojiMiddlePhone = document.querySelector(".js-phone-fe-middle");
 let contactWrapperPhoneP = document.querySelector(".contact-wrapper-phone-p");
 
+
+/*
 let blinkingInterval = setInterval(function blinkingIntervalFunction(){
     if(blink){
         blinkingCursor.style.color = "white";
@@ -70,6 +72,10 @@ let blinkingInterval = setInterval(function blinkingIntervalFunction(){
         blink = true;
     }
 }, 500)
+
+
+*/
+
 
 contactWrapperTwitterP.addEventListener("mouseover", function(){
     faceEmojiLeftTwitter.style.transform = "translate(0em, 0) rotate(45deg)";

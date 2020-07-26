@@ -2,7 +2,7 @@
 :root {
     --day-load-panel-bcolor: white;
     --day-load-panel-color: rgba(7, 7, 7);
-    --day-hill-color: rgb(172, 170, 170);
+    --day-hill-color: rgb(90, 90, 90);
     --day-tent-color: rgb(226, 197, 169);
     --day-tent-line-color: rgb(112, 111, 111);
     --day-stone-color:rgb(151, 143, 124);
@@ -11,7 +11,7 @@
 
     --night-load-panel-color: white;
     --night-load-panel-bcolor: rgb(82, 79, 76);
-    --night-hill-color: rgb(70, 61, 50);
+    --night-hill-color: rgb(90, 90, 90);
     --night-stone-color:rgb(73, 72, 71);
     --night-stone-bench-color: rgb(73, 72, 71);
     --night-tent-color: rgb(136, 131, 126);
@@ -312,27 +312,37 @@ body {
     top: 0;
     font-family: 'Kaushan Script', cursive;
 }
-.projects-project{
-    height: 23em;
-    width: 20em;
+.project__wrapper__section{
+    height: 25em;
+    width: 25em;
     margin-top: 3em;
+    background-color: rgb(53, 53, 53);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.project__wrapper__section:hover{
+    margin-top: 0.3em;
+}
+.projects-project{
+    height: 90%;
+    width: 90%;
     transition: all 0.3s ease;
     opacity: 0;
     text-decoration: none;
     object-fit: contain;
 }
-.projects-project:hover{
-    margin-top: 0.3em;
-}
 .projects-project-frame{
     width: 100%;
-    height: 20em;
+    height: 90%;
     background: rgb(184, 53, 140);
     border: 1px solid black;
 }
 .projects-project-frame-title{
     width: 100%;
-    height: 3em;
+    height: 10%;
     text-align: center;
 }
 .projects-project-frame-title-name{
@@ -470,6 +480,9 @@ body {
 .about-text{
     font-size: 2em;
     margin: 1em;
+}
+.about-text a {
+    color: white;
 }
 
 /*contact*/
@@ -3737,19 +3750,46 @@ body {
         line-height: 3em; 
     } 
     /*projects*/ 
-    .projects-project{
+    
+    .project__wrapper__section{
         height: 25em;
-        width: 25em;
+        width: 30%;
         margin-top: 3em;
+        background-color: rgb(53, 53, 53);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: all 0.3s ease;
-        opacity: 0;
+    }
+    .projects-project{
+        margin-top: 0;
+        width: 90%;
+        height: 90%;
         text-decoration: none;
         object-fit: contain;
     }
+    .project__wrapper__section:hover{
+        margin-top: 0.3em;
+    }
+    .projects-project-frame{
+        width: 100%;
+        height: 90%;
+        background: rgb(184, 53, 140);
+        border: 1px solid black;
+    }
+    .projects-project-frame-title{
+        width: 100%;
+        height: 10%;
+        text-align: center;
+    }
+    .projects-project-frame-title-name{
+        font-size: 1.5em;
+        line-height: 1.5em;
+        color: black;
+    }
     /*about*/
     .about-wrapper{
-        display: block;
-        
+        display: block; 
     }
     .about-wrapper-picture {
         float: left;
@@ -4012,6 +4052,7 @@ body {
     .title-wrapper{
     /*inherit*/
     }
+   
     .title-inner-wrapper{
     /*inherit*/
     }
@@ -4066,6 +4107,18 @@ body {
         text-indent: 2.2em;
         line-height: 3em; 
     }  
+    /*projects*/
+    .project__wrapper__section{
+        height: 25%;
+        width: 30%;
+        margin-top: 3em;
+        background-color: rgb(53, 53, 53);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
     /*about*/
     .about-wrapper{
         display: block;
@@ -4394,33 +4447,43 @@ body {
         color: #2a3d6e;
     }
     .projects-wrapper {
+        width: 80%;
+        margin: 0 auto;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-around;
         top: 0;
         font-family: 'Kaushan Script', cursive;
     }
-    .projects-project{
-        height: 20em;
-        width: 20em;
+    .project__wrapper__section{
+        height: 32em;
+        width: 30%;
         margin-top: 3em;
+        background-color: rgb(53, 53, 53);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: all 0.3s ease;
-        opacity: 0;
+    }
+    .projects-project{
+        margin-top: 0;
+        width: 90%;
+        height: 90%;
         text-decoration: none;
         object-fit: contain;
     }
-    .projects-project:hover{
+    .project__wrapper__section:hover{
         margin-top: 0.3em;
     }
     .projects-project-frame{
         width: 100%;
-        height: 20em;
+        height: 90%;
         background: rgb(184, 53, 140);
         border: 1px solid black;
     }
     .projects-project-frame-title{
         width: 100%;
-        height: 3em;
+        height: 10%;
         text-align: center;
     }
     .projects-project-frame-title-name{
@@ -4541,9 +4604,10 @@ body {
 
     /*about*/
     .about-wrapper{
-        width: 100%;
+        width: 85%;
         margin-top: 2em;
         margin-bottom: 2em;
+        margin: 0 auto;
     }
     .about-wrapper-picture {
         float: left;
